@@ -6,7 +6,7 @@ import { getItems, getCategories } from "../api/items";
 
 export default function Market() {
   const [filter, setFilter] = useState(null);
-  let oldcategories = ["Fruit", "Vegetable", "Baked Goods", "Meats", "Dairy"];
+  //let oldcategories = ["Fruit", "Vegetable", "Baked Goods", "Meats", "Dairy"];
 
   const { data: items, itemsError } = useQuery({
     queryKey: ["items"],

@@ -10,13 +10,23 @@ function FoodItemCard({ itemId, itemName, imagepath, category, price }) {
     <>
       {
         <div className="card" style={{ width: "16rem" }}>
-          <img
-            src="../images/placeholder.png"
-            className="card-img-top"
-            width="100px"
-            height="100px"
-            alt=""
-          />
+          {imagepath == null || imagepath == "null" ? (
+            <img
+              src="../images/placeholder.png"
+              className="card-img-top"
+              width="100px"
+              height="100px"
+              alt=""
+            />
+          ) : (
+            <img
+              src={imagepath}
+              className="card-img-top"
+              width="100px"
+              height="100px"
+              alt=""
+            />
+          )}
           <div className="card-body">
             {}
             <h5 className="card-title">{itemName}</h5>

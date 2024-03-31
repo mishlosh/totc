@@ -8,7 +8,11 @@ export const CartItem = (props) => {
 
   return (
     <div className="cartItem">
-      <img src={imagepath} />
+      {imagepath == null || imagepath == "null" ? (
+        <img src="../images/placeholder.png" />
+      ) : (
+        <img src={imagepath} />
+      )}
       <div className="description">
         <p>
           <b>{itemName}</b>

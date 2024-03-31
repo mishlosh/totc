@@ -7,8 +7,26 @@ import { Cart } from "./pages/Cart/Cart";
 import { Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { ShopContextProvider } from "./context/shop-context";
+import { useQuery } from "@tanstack/react-query";
+import { getItems, getCategories } from "./api/items";
+
+const POSTS = [
+  { id: 1, title: "Post 1" },
+  { id: 2, title: "Post 2" },
+];
 
 function App() {
+  const { data: items, itemsError } = useQuery({
+    queryKey: ["items"],
+    queryFn: () => getItems(),
+  });
+  const { data: categories, catsError } = useQuery({
+    queryKey: ["categories"],
+    queryFn: () => getCategories(),
+  });
+
+  console.log(items);
+  console.log(categories);
   return (
     <div>
       <ShopContextProvider>
