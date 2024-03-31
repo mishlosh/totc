@@ -25,7 +25,7 @@ app.get('/totc', (req, res)=> {
 })
 
 app.get('/totc/category', (req, res)=> {
-    const sql = "SELECT DISTINCT category FROM item";
+    const sql = "SELECT category, count(*) FROM item GROUP BY category";
     db.query(sql, (err, data) => {
         if(err) return res.json(err);
         return res.json(data);

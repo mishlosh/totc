@@ -29,9 +29,9 @@ function ListGroup({ heading, items, emoji, filterState, setFilterState }) {
               }
               console.log(index, selectedIndex, item, filterState);
             }}
-            key={item}
+            key={item.category}
           >
-            {item}
+            {item.category}
           </li>
         ))}
       </ul>

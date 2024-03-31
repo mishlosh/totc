@@ -19,6 +19,7 @@ export default function Market() {
   });
 
   console.log(items);
+  console.log(categories);
   //<FoodItem filter={filter} />
   return (
     <>
@@ -27,7 +28,7 @@ export default function Market() {
           <div className="col col-sm-2">
             <ListGroup
               heading="Categories"
-              items={oldcategories}
+              items={categories}
               filterState={filter}
               setFilterState={setFilter}
             />
