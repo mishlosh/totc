@@ -1,4 +1,6 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import React from "react";
+import { ShoppingCart } from "phosphor-react";
 
 export default function Navbar() {
   const path = window.location.pathname;
@@ -14,6 +16,10 @@ export default function Navbar() {
           <CustomLink to="/menu">Menu</CustomLink>
           <CustomLink to="/catering">Catering</CustomLink>
           <CustomLink to="/home">Coffee Club</CustomLink>
+          <CustomLink to="/cart">
+            {" "}
+            <ShoppingCart size={32} />
+          </CustomLink>
         </ul>
       </nav>
     </>

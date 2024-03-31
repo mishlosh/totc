@@ -8,7 +8,7 @@ export function getItems() {
 }
 
 export function getCategories() {
-    return axios .get("http://localhost:8081/totc/category", { params: { _sort: "category"}})
+    return axios .get("http://localhost:8081/totc/category")
     .then(res=> res.data)
     .catch(err => {console.log(res)})
 }

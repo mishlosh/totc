@@ -1,8 +1,8 @@
 import ListGroup from "../components/ListGroup";
 import FoodItemCard from "../components/FoodItemCard";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getItems } from "../api/items";
+import { getItems, getCategories } from "../api/items";
 
 export default function Market() {
   const [filter, setFilter] = useState(null);
@@ -19,9 +19,6 @@ export default function Market() {
   });
 
   console.log(items);
-  console.log({ categories });
-  console.log(oldcategories);
-  //console.log(items.category);
   //<FoodItem filter={filter} />
   return (
     <>
@@ -34,14 +31,15 @@ export default function Market() {
               filterState={filter}
               setFilterState={setFilter}
             />
-            <div class="vr"></div>
+            <div className="vr"></div>
           </div>
           <div className="col col-sm-10">
             <div className="row row-cols-4">
               {items?.map((item) =>
                 item.category.toLowerCase() == filter || filter == null ? (
                   <FoodItemCard
-                    foodName={item.itemName}
+                    itemId={item.itemId}
+                    itemName={item.itemName}
                     price={item.price}
                     category={item.category}
                     filter={filter}
@@ -56,4 +54,8 @@ export default function Market() {
       </div>
     </>
   );
+}
+
+function mergeCategories(arr, addition) {
+  return arr.join(addition);
 }

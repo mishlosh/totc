@@ -1,8 +1,15 @@
-function FoodItemCard({ key, foodName, description, price, category, filter }) {
+import React, { useContext } from "react";
+import { ShopContext } from "../context/shop-context";
+
+function FoodItemCard({ itemId, itemName, imagepath, category, price }) {
+  const { addToCart, cartItems } = useContext(ShopContext);
+
+  const cartItemCount = cartItems[itemId];
+
   return (
     <>
       {
-        <div className="card" style={{ width: "15rem" }}>
+        <div className="card" style={{ width: "16rem" }}>
           <img
             src="../images/placeholder.png"
             className="card-img-top"
@@ -12,27 +19,20 @@ function FoodItemCard({ key, foodName, description, price, category, filter }) {
           />
           <div className="card-body">
             {}
-            <h5 className="card-title">{foodName}</h5>
+            <h5 className="card-title">{itemName}</h5>
             <div className="container">
               {" "}
               <div className="row">
-                <div className="col col-sm-4">
+                <div className="col col-sm-6">
                   <p className="card-text">${price}</p>
                 </div>
-                <div className="col col-sm-5">
-                  <form className="food-card-form">
-                    <input
-                      type="number"
-                      id="fquantity"
-                      name="fquantity"
-                      style={{ width: "4rem" }}
-                    ></input>{" "}
-                  </form>
-                </div>
-                <div className="col col-sm-3">
-                  <a href="#" className="btn btn-primary">
-                    +
-                  </a>
+                <div className="col col-sm-6">
+                  <button
+                    className="addToCartBttn"
+                    onClick={() => addToCart(itemId)}
+                  >
+                    + {cartItemCount > 0 && <> ({cartItemCount})</>}
+                  </button>
                 </div>
               </div>
             </div>
