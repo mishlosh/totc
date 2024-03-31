@@ -7,10 +7,10 @@ values(itenName, price, imagePath, category)
 
 # Startup:
 
+in terminal:
 cd backend
 npm start
 
-# new terminal
-
+new terminal:
 cd frontend
 npm run dev
