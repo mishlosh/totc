@@ -24,7 +24,7 @@ function ListGroup({ heading, items, emoji, filterState, setFilterState }) {
                 setFilterState(null);
                 setSelectedIndex(-1);
               } else {
-                setFilterState(item.toLowerCase());
+                setFilterState(item.category.toLowerCase());
                 setSelectedIndex(index);
               }
               console.log(index, selectedIndex, item, filterState);

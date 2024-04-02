@@ -1,10 +1,22 @@
 import ListGroup from "../components/ListGroup";
 import MenuItem from "../components/MenuItem";
 import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getItems, getCategories } from "../api/items";
 
 export default function Menu() {
   const [filter, setFilter] = useState(null);
-  let categories = ["Appetizers", "Lunch", "Fish", "Entree", "Dessert"];
+
+  const { data: items, itemsError } = useQuery({
+    queryKey: ["items"],
+    queryFn: () => getItems(),
+  });
+
+  const { data: categories, catsError } = useQuery({
+    queryKey: ["categories"],
+    queryFn: () => getCategories(),
+  });
+  let oldcategories = ["Appetizers", "Lunch", "Fish", "Entree", "Dessert"];
   return (
     <>
       <div className="container">
