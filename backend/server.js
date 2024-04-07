@@ -1,8 +1,13 @@
 const express = require('express');
 const mysql = require('mysql')
+require("dotenv").config()
+const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST)
+const bodyParser = require("body-parser")
 const cors = require('cors')
 
 const app = express()
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(cors())
 
 const db = mysql.createConnection({
@@ -31,6 +36,33 @@ app.get('/totc/category', (req, res)=> {
         return res.json(data);
     })
 })
+
+// This is where the backend and Stripe handle the payment
+app.post("/payment", cors(), async (req, res) => {
+	let { amount, id } = req.body
+	try {
+		const payment = await stripe.paymentIntents.create({
+			amount,
+			currency: "USD",
+			description: "Taste Of The Carribean",
+			payment_method: id,
+			confirm: true,
+            return_url: "http://localhost:5173/pages/success"
+		})
+		console.log("Payment", payment)
+		res.json({
+			message: "Payment successful",
+			success: true
+		})
+	} catch (error) {
+		console.log("Error", error)
+		res.json({
+			message: "Payment failed",
+			success: false
+		})
+	}
+})
+
 app.listen(8081, ()=> {
     console.log("listening");
     
