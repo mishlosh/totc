@@ -1,26 +1,23 @@
 import ListGroup from "../components/ListGroup";
 import FoodItemCard from "../components/FoodItemCard";
 import React, { useEffect, useState, useContext } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getItems, getCategories } from "../api/items";
+import { QueryContext } from "../context/query-context";
 
 export default function Market() {
   const [filter, setFilter] = useState(null);
-  //let oldcategories = ["Fruit", "Vegetable", "Baked Goods", "Meats", "Dairy"];
-
-  const { data: items, itemsError } = useQuery({
-    queryKey: ["items"],
-    queryFn: () => getItems(),
-  });
-
-  const { data: categories, catsError } = useQuery({
-    queryKey: ["categories"],
-    queryFn: () => getCategories(),
-  });
-
+  const {
+    marketItems: items,
+    marketItemsLoading: itemsLoading,
+    marketCategories: categories,
+    marketCategoriesLoading: catsLoading,
+  } = useContext(QueryContext);
+  /*
   console.log(items);
   console.log(categories);
-  //<FoodItem filter={filter} />
+*/
+  if (itemsLoading || catsLoading) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <>
       <div className="container">
@@ -55,8 +52,4 @@ export default function Market() {
       </div>
     </>
   );
-}
-
-function mergeCategories(arr, addition) {
-  return arr.join(addition);
 }
