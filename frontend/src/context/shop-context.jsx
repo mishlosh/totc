@@ -1,24 +1,33 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
+import { QueryContext } from "./query-context";
 import { PRODUCTS } from "../products";
 
 export const ShopContext = createContext(null);
 
 const getDefaultCart = () => {
+  const { marketItems, marketItemsLoading } = useContext(QueryContext);
   let cart = {};
-  for (let i = 1; i < PRODUCTS.length + 1; i++) {
+  //while (marketItemsLoading) {}
+  for (let i = 1; i < marketItems.length + 1; i++) {
     cart[i] = 0;
   }
   return cart;
 };
 
 export const ShopContextProvider = (props) => {
+  const { marketItems, marketItemsLoading } = useContext(QueryContext);
+  if (marketItemsLoading) {
+    return null;
+  }
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = PRODUCTS.find((product) => product.id === Number(item));
+        let itemInfo = marketItems.find(
+          (product) => product.itemId === Number(item)
+        );
         totalAmount += cartItems[item] * itemInfo.price;
       }
     }
@@ -48,6 +57,7 @@ export const ShopContextProvider = (props) => {
     removeFromCart,
     getTotalCartAmount,
     checkout,
+    marketItemsLoading,
   };
 
   return (
