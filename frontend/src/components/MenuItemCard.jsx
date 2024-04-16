@@ -1,9 +1,13 @@
 export default function MenuItemCard({
+  itemId,
+  itemName,
+  imagepath,
   foodName,
   description,
   price,
   category,
   filter,
+  dietaryTags,
 }) {
   return (
     <>
@@ -27,6 +31,10 @@ export default function MenuItemCard({
               </a>
             </div>
           </div>
+        </div>
+        <div className="row">
+          <div className="col"></div>
+          <div className="col"></div>
         </div>
       </div>
     </>

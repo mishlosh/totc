@@ -1,7 +1,8 @@
-import ListGroup from "../components/ListGroup";
-import FoodItemCard from "../components/FoodItemCard";
+import ListGroup from "../../components/ListGroup";
+import FoodItemCard from "../../components/FoodItemCard";
 import React, { useEffect, useState, useContext } from "react";
-import { QueryContext } from "../context/query-context";
+import { QueryContext } from "../../context/query-context";
+import "./Market.css";
 
 export default function Market() {
   const [filter, setFilter] = useState(null);

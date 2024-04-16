@@ -1,8 +1,9 @@
-import ListGroup from "../components/ListGroup";
-import MenuItem from "../components/MenuItem";
-import React, { useState } from "react";
+import MenuList from "../../components/MenuList";
+import MenuItem from "../../components/MenuItem";
+import React, { useState, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getItems, getCategories } from "../api/items";
+import { getItems, getCategories } from "../../api/items";
+import "./Menu.css";
 
 export default function Menu() {
   const [filter, setFilter] = useState(null);
@@ -22,7 +23,7 @@ export default function Menu() {
       <div className="container">
         <div className="row">
           <div className="col col-sm-2">
-            <ListGroup
+            <MenuList
               heading="Menu"
               items={categories}
               filterState={filter}

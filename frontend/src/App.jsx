@@ -1,8 +1,8 @@
 import NavBar from "./components/NavBar";
 import Catering from "./pages/Catering";
 import Home from "./pages/Home";
-import Market from "./pages/Market";
-import Menu from "./pages/Menu";
+import Market from "./pages/Market/Market";
+import Menu from "./pages/Menu/Menu";
 import Payment from "./pages/Payment";
 import Landing from "./pages/Landing";
 import { Cart } from "./pages/Cart/Cart";
