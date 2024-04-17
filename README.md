@@ -1,9 +1,12 @@
 # totc
 
 Requires:
-Database: "totc"
-with table: "item"
-values(itenName, price, imagePath, category)
+Database: "tocd"
+with tables: "itemlistings_main"
+values(itenName, price, imagePath, categoryID, itemID)
+
+"itemlistings_category"
+values(categoryID, categoryName)
 
 # Startup:
 

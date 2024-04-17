@@ -24,14 +24,14 @@ function ListGroup({ heading, items, emoji, filterState, setFilterState }) {
                 setFilterState(null);
                 setSelectedIndex(-1);
               } else {
-                setFilterState(item.category.toLowerCase());
+                setFilterState(item.categoryName.toLowerCase());
                 setSelectedIndex(index);
               }
               console.log(index, selectedIndex, item, filterState);
             }}
-            key={item.category}
+            key={item.categoryName}
           >
-            {item.category}
+            {item.categoryName}
           </li>
         ))}
       </ul>
