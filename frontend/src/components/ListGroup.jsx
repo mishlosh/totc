@@ -11,7 +11,7 @@ function ListGroup({ heading, items, emoji, filterState, setFilterState }) {
         {heading} {emoji}
       </h1>
       {items.length === 0 && <p>No item found</p>}
-      <ul className="list-group">
+      <ul className="list-group market-categories">
         {items.map((item, index) => (
           <li
             className={

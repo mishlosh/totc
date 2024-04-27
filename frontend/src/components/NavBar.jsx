@@ -7,8 +7,11 @@ export default function Navbar() {
   return (
     <>
       <nav className="nav">
-        <Link to="/" className="site-title">
-          TotC
+        <Link to="/home" className="site-title">
+          <img
+            src="../images/Logo-TotC-Transparent.png"
+            className="site-logo"
+          />
         </Link>
         <ul>
           <CustomLink to="/home">Home</CustomLink>

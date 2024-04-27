@@ -3,7 +3,9 @@ import { AlignCenterHorizontal } from "phosphor-react";
 export default function MenuCategoryHeader({ header }) {
   return (
     <div>
-      <h1>{header}</h1>
+      <hr />
+      <h1 className="MenuCategoryHeader">{header}</h1>
+      <hr />
     </div>
   );
 }

@@ -14,7 +14,7 @@ function FoodItemCard({ itemID, itemName, imagepath, category, price }) {
             <img
               src="../images/placeholder.png"
               className="card-img-top"
-              width="100px"
+              width="80px"
               height="100px"
               alt=""
             />

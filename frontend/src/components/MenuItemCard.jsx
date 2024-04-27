@@ -11,17 +11,20 @@ export default function MenuItemCard({
 }) {
   return (
     <>
-      <div className="card mb-3" style={{ maxWidth: "80rem" }}>
+      <div className="card mb-3" style={{ maxWidth: "75rem" }}>
         <div className="row">
-          <div className="col col-sm-6">
-            <img
-              src="../images/placeholder.png"
-              alt=""
-              width="500rem"
-              height="200rem"
-            />
+          <div className="col menuImageFrame">
+            {imagepath == null || imagepath == "null" ? (
+              <img
+                className="menuImage"
+                src="../images/placeholder.png"
+                alt=""
+              />
+            ) : (
+              <img className="menuImage" src={imagepath} alt="" />
+            )}
           </div>
-          <div className="col col-sm-6">
+          <div className="col">
             <div className="card-body">
               {}
               <h5 className="card-title">{itemName}</h5>

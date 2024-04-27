@@ -19,7 +19,6 @@ export default function Menu() {
     menuCategories: categories,
     menuCategoriesLoading: catsLoading,
   } = useContext(QueryContext);
-
   return (
     <>
       <div className="container">
@@ -34,7 +33,7 @@ export default function Menu() {
             <div className="vr"></div>
           </div>
           <div className="col col-sm-10">
-            <div className="overflow">
+            <div className="scroll">
               {categories.map((category) => (
                 <>
                   <MenuCategoryHeader header={category.categoryName} />

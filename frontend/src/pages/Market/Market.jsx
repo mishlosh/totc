@@ -23,7 +23,7 @@ export default function Market() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col col-sm-2">
+          <div className="col col-sm-2 market-categories">
             <ListGroup
               heading="Categories"
               items={categories}
@@ -32,7 +32,7 @@ export default function Market() {
             />
             <div className="vr"></div>
           </div>
-          <div className="col col-sm-10">
+          <div className="col col-sm-10 scroll">
             <div className="row row-cols-4">
               {items?.map((item) =>
                 item.categoryName.toLowerCase() == filter || filter == null ? (
@@ -41,6 +41,7 @@ export default function Market() {
                     itemName={item.itemName}
                     price={item.price}
                     category={item.categoryName}
+                    imagepath={item.imagepath}
                     filter={filter}
                   />
                 ) : (
