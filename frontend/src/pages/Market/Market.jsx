@@ -1,7 +1,8 @@
-import ListGroup from "../components/ListGroup";
-import FoodItemCard from "../components/FoodItemCard";
+import ListGroup from "../../components/ListGroup";
+import FoodItemCard from "../../components/FoodItemCard";
 import React, { useEffect, useState, useContext } from "react";
-import { QueryContext } from "../context/query-context";
+import { QueryContext } from "../../context/query-context";
+import "./Market.css";
 
 export default function Market() {
   const [filter, setFilter] = useState(null);
@@ -11,10 +12,10 @@ export default function Market() {
     marketCategories: categories,
     marketCategoriesLoading: catsLoading,
   } = useContext(QueryContext);
-  /*
+
   console.log(items);
   console.log(categories);
-*/
+
   if (itemsLoading || catsLoading) {
     return <h1>Loading...</h1>;
   }
@@ -34,12 +35,12 @@ export default function Market() {
           <div className="col col-sm-10">
             <div className="row row-cols-4">
               {items?.map((item) =>
-                item.category.toLowerCase() == filter || filter == null ? (
+                item.categoryName.toLowerCase() == filter || filter == null ? (
                   <FoodItemCard
                     itemId={item.itemId}
                     itemName={item.itemName}
                     price={item.price}
-                    category={item.category}
+                    category={item.categoryName}
                     filter={filter}
                   />
                 ) : (

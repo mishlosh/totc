@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ListGroup({ heading, items, emoji, filterState, setFilterState }) {
+function MenuList({ heading, items, emoji, filterState, setFilterState }) {
   //console.log(props);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   //const [filter, onFilterChange] = [{ filter }, { onFilterChange }];
@@ -11,27 +11,27 @@ function ListGroup({ heading, items, emoji, filterState, setFilterState }) {
         {heading} {emoji}
       </h1>
       {items.length === 0 && <p>No item found</p>}
-      <ul className="list-group">
+      <ul className="list-group menu-list">
         {items.map((item, index) => (
           <li
             className={
               selectedIndex === index
-                ? "list-group-item active"
-                : "list-group-item"
+                ? "list-group-item menu-list-item active"
+                : "list-group-item menu-list-item"
             }
             onClick={() => {
               if (selectedIndex == index) {
                 setFilterState(null);
                 setSelectedIndex(-1);
               } else {
-                setFilterState(item.categoryName.toLowerCase());
+                setFilterState(item.category.toLowerCase());
                 setSelectedIndex(index);
               }
               console.log(index, selectedIndex, item, filterState);
             }}
-            key={item.categoryName}
+            key={item.category}
           >
-            {item.categoryName}
+            {item.category}
           </li>
         ))}
       </ul>
@@ -39,4 +39,4 @@ function ListGroup({ heading, items, emoji, filterState, setFilterState }) {
   );
 }
 
-export default ListGroup;
+export default MenuList;

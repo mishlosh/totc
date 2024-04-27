@@ -14,7 +14,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: 'root',
     password: '',
-    database: 'totc',
+    database: 'tocd',
 
 })
 
@@ -35,6 +35,22 @@ app.get('/totc/category', (req, res)=> {
         if(err) return res.json(err);
         return res.json(data);
     })
+})
+
+app.get('/tocd/market/item', (req, res)=> {
+	const sql = "SELECT itemlistings_main.itemID, itemlistings_main.itemName, itemlistings_main.price, itemlistings_main.imagepath, itemlistings_category.categoryID, itemlistings_category.categoryName FROM itemlistings_main INNER JOIN itemlistings_category ON itemlistings_main.categoryID=itemlistings_category.categoryID";
+	db.query(sql, (err, data) => {
+		if(err) return res.json(err);
+		return res.json(data);
+	})
+})
+
+app.get('/tocd/market/category', (req, res)=> {
+	const sql = "SELECT categoryName, categoryID FROM itemlistings_category";
+	db.query(sql, (err, data) => {
+		if(err) return res.json(err);
+		return res.json(data);
+	})
 })
 
 // This is where the backend and Stripe handle the payment
