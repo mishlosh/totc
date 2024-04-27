@@ -1,5 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
-import { getItems, getCategories } from "../api/items";
+import {
+  getItems,
+  getCategories,
+  getMenu,
+  getMenuCategories,
+} from "../api/items";
 
 import { useQuery } from "@tanstack/react-query";
 
@@ -26,6 +31,26 @@ export const QueryContextProvider = (props) => {
     queryFn: () => getCategories(),
   });
 
+  const {
+    data: menuItems,
+    error: menuItemsError,
+    status: menuItemsStatus,
+    isLoading: menuItemsLoading,
+  } = useQuery({
+    queryKey: ["menuItems"],
+    queryFn: () => getMenu(),
+  });
+
+  const {
+    data: menuCategories,
+    error: menuCategoriesError,
+    status: menuCategoriesStatus,
+    isLoading: menuCategoriesLoading,
+  } = useQuery({
+    queryKey: ["menuCategories"],
+    queryFn: () => getMenuCategories(),
+  });
+
   const contextValue = {
     marketItems,
     marketItemsStatus,
@@ -35,6 +60,14 @@ export const QueryContextProvider = (props) => {
     marketCategoriesError,
     marketCategoriesStatus,
     marketCategoriesLoading,
+    menuItems,
+    menuItemsError,
+    menuItemsLoading,
+    menuItemsStatus,
+    menuCategories,
+    menuCategoriesError,
+    menuCategoriesLoading,
+    menuCategoriesStatus,
   };
 
   return (

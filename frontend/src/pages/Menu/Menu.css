@@ -1,0 +1,13 @@
+.overflow {
+    height: 200;
+    background-color: Gold;
+    flex-direction: column;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    white-space: nowrap;
+}
+
+html {
+    scroll-behavior: smooth;
+}

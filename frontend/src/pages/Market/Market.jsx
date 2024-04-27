@@ -37,7 +37,7 @@ export default function Market() {
               {items?.map((item) =>
                 item.categoryName.toLowerCase() == filter || filter == null ? (
                   <FoodItemCard
-                    itemId={item.itemId}
+                    itemID={item.itemID}
                     itemName={item.itemName}
                     price={item.price}
                     category={item.categoryName}

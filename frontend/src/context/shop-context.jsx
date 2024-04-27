@@ -26,7 +26,7 @@ export const ShopContextProvider = (props) => {
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = marketItems.find(
-          (product) => product.itemId === Number(item)
+          (product) => product.itemID === Number(item)
         );
         totalAmount += cartItems[item] * itemInfo.price;
       }
@@ -34,16 +34,16 @@ export const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
-  const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+  const addToCart = (itemID) => {
+    setCartItems((prev) => ({ ...prev, [itemID]: prev[itemID] + 1 }));
   };
 
-  const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  const removeFromCart = (itemID) => {
+    setCartItems((prev) => ({ ...prev, [itemID]: prev[itemID] - 1 }));
   };
 
-  const updateCartItemCount = (newAmount, itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
+  const updateCartItemCount = (newAmount, itemID) => {
+    setCartItems((prev) => ({ ...prev, [itemID]: newAmount }));
   };
 
   const checkout = () => {

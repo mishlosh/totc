@@ -30,7 +30,7 @@ export const Cart = () => {
       </div>
       <div className="cart">
         {marketItems.map((item) => {
-          if (cartItems[item.itemId] !== 0) {
+          if (cartItems[item.itemID] !== 0) {
             return <CartItem data={item} />;
           }
         })}

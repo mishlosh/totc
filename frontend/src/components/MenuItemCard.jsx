@@ -24,7 +24,7 @@ export default function MenuItemCard({
           <div className="col col-sm-6">
             <div className="card-body">
               {}
-              <h5 className="card-title">{foodName}</h5>
+              <h5 className="card-title">{itemName}</h5>
               <p className="card-text">{description}</p>
               <a href="#" className="btn btn-primary">
                 +

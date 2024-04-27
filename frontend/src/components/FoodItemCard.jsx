@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/shop-context";
 
-function FoodItemCard({ itemId, itemName, imagepath, category, price }) {
+function FoodItemCard({ itemID, itemName, imagepath, category, price }) {
   const { addToCart, cartItems } = useContext(ShopContext);
 
-  const cartItemCount = cartItems[itemId];
+  const cartItemCount = cartItems[itemID];
 
   return (
     <>
@@ -39,7 +39,7 @@ function FoodItemCard({ itemId, itemName, imagepath, category, price }) {
                 <div className="col col-sm-6">
                   <button
                     className="addToCartBttn"
-                    onClick={() => addToCart(itemId)}
+                    onClick={() => addToCart(itemID)}
                   >
                     + {cartItemCount > 0 && <> ({cartItemCount})</>}
                   </button>

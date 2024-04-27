@@ -15,7 +15,9 @@ export default function Navbar() {
           <CustomLink to="/market">Market</CustomLink>
           <CustomLink to="/menu">Menu</CustomLink>
           <CustomLink to="/catering">Catering</CustomLink>
-          <CustomLink to="/home">Coffee Club</CustomLink>
+          <CustomLink to="https://tocfoodmarket.com/coffee-club-sign-up">
+            Coffee Club
+          </CustomLink>
           <CustomLink to="/cart">
             {" "}
             <ShoppingCart size={32} />

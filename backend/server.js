@@ -53,6 +53,22 @@ app.get('/tocd/market/category', (req, res)=> {
 	})
 })
 
+app.get('/tocd/menu', (req, res)=> {
+	const sql = "SELECT menulistings_main.menuID, menulistings_main.menuName, menulistings_main.price, menulistings_main.imagepath, menulistings_category.categoryID, menulistings_category.categoryName, menulistings_main.dietTags, menulistings_main.description, menulistings_main.longDescription FROM menulistings_main INNER JOIN menulistings_category ON menulistings_main.categoryID=menulistings_category.categoryID";
+	db.query(sql, (err, data) => {
+		if(err) return res.json(err);
+		return res.json(data);
+	})
+})
+
+app.get('/tocd/menu/category', (req, res)=> {
+	const sql = "SELECT categoryName, categoryID FROM menulistings_category";
+	db.query(sql, (err, data) => {
+		if(err) return res.json(err);
+		return res.json(data);
+	})
+})
+
 // This is where the backend and Stripe handle the payment
 app.post("/payment", cors(), async (req, res) => {
 	let { amount, id } = req.body

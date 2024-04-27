@@ -1,38 +1,63 @@
 import MenuList from "../../components/MenuList";
+import NavList from "../../components/NavList";
 import MenuItem from "../../components/MenuItem";
-import React, { useState, useContext } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getItems, getCategories } from "../../api/items";
+import MenuCategoryHeader from "../../components/MenuCategoryHeader";
+import MenuItemCard from "../../components/MenuItemCard";
+import React, { useState, useContext, useRef } from "react";
+import { QueryContext } from "../../context/query-context";
 import "./Menu.css";
 
 export default function Menu() {
-  const [filter, setFilter] = useState(null);
+  const [selectionState, setSelectionState] = useState(null);
+  const ref = useRef(null);
+  const handleClick = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const {
+    menuItems: items,
+    menuItemsLoading: itemsLoading,
+    menuCategories: categories,
+    menuCategoriesLoading: catsLoading,
+  } = useContext(QueryContext);
 
-  const { data: items, itemsError } = useQuery({
-    queryKey: ["items"],
-    queryFn: () => getItems(),
-  });
-
-  const { data: categories, catsError } = useQuery({
-    queryKey: ["categories"],
-    queryFn: () => getCategories(),
-  });
-  let oldcategories = ["Appetizers", "Lunch", "Fish", "Entree", "Dessert"];
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col col-sm-2">
-            <MenuList
+            <NavList
               heading="Menu"
               items={categories}
-              filterState={filter}
-              setFilterState={setFilter}
+              selectionState={selectionState}
+              setSelectionState={setSelectionState}
             />
-            <div class="vr"></div>
+            <div className="vr"></div>
           </div>
           <div className="col col-sm-10">
-            <MenuItem filter={filter} />
+            <div className="overflow">
+              {categories.map((category) => (
+                <>
+                  <MenuCategoryHeader header={category.categoryName} />
+                  {items.map((item) =>
+                    item.categoryName == category.categoryName ? (
+                      <div className="col" key={item.menuName}>
+                        <MenuItemCard
+                          itemID={item.menuID}
+                          itemName={item.menuName}
+                          description={item.description}
+                          dietaryTags={item.dietTags}
+                          price={item.price}
+                          category={item.category}
+                          imagepath={item.imagepath}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )
+                  )}
+                </>
+              ))}
+            </div>
           </div>
         </div>
       </div>

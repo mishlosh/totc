@@ -13,4 +13,14 @@ export function getCategories() {
     .catch(err => {console.log(res)})
 }
 
+export function getMenu() {
+    return axios .get("http://localhost:8081/tocd/menu")
+    .then(res=> res.data)
+    .catch(err=> {console.log(res)})
+}
 
+export function getMenuCategories() {
+    return axios .get("http://localhost:8081/tocd/menu/category")
+    .then(res=> res.data)
+    .catch(err => {console.log(res)})
+}
