@@ -23,16 +23,15 @@ export default function Menu() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col col-sm-2">
+          <div className="col col-2 menuList">
             <NavList
               heading="Menu"
               items={categories}
               selectionState={selectionState}
               setSelectionState={setSelectionState}
             />
-            <div className="vr"></div>
           </div>
-          <div className="col col-sm-10">
+          <div className="col col-10 menuBody">
             <div className="scroll">
               {categories.map((category) => (
                 <>

@@ -14,18 +14,10 @@ function FoodItemCard({ itemID, itemName, imagepath, category, price }) {
             <img
               src="../images/placeholder.png"
               className="card-img-top"
-              width="80px"
-              height="100px"
               alt=""
             />
           ) : (
-            <img
-              src={imagepath}
-              className="card-img-top"
-              width="100px"
-              height="100px"
-              alt=""
-            />
+            <img src={imagepath} className="card-img-top" alt="" />
           )}
           <div className="card-body">
             {}

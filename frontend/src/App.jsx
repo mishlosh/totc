@@ -20,7 +20,7 @@ function App() {
         <ShopContextProvider>
           <NavBar />
           <Routes>
-            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/market" element={<Market />} />
             <Route path="/menu" element={<Menu />} />

@@ -111,7 +111,9 @@ export default function Payment() {
         <>
           {" "}
           <h3>${getTotalCartAmount()}</h3> <img src={coffee} alt="Coffee" />
-          <button onClick={() => setShowItem(true)}>Purchase Coffee</button>
+          <button className="checkout-bttn" onClick={() => setShowItem(true)}>
+            Purchase Coffee
+          </button>
         </>
       )}
     </div>

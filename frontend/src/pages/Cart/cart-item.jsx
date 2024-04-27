@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../../context/shop-context";
+import "./cart.css";
 
 export const CartItem = (props) => {
   const { itemID, itemName, price, imagepath } = props.data;
@@ -8,25 +9,30 @@ export const CartItem = (props) => {
 
   return (
     <div className="cartItem">
-      {imagepath == null || imagepath == "null" ? (
-        <img src="../images/placeholder.png" />
-      ) : (
-        <img src={imagepath} />
-      )}
       <div className="description">
         <p>
           <b>{itemName}</b>
         </p>
         <p> Price: ${price}</p>
         <div className="countHandler">
-          <button onClick={() => removeFromCart(itemID)}> - </button>
+          <button
+            className="cartItem-bttn"
+            onClick={() => removeFromCart(itemID)}
+          >
+            {" "}
+            -{" "}
+          </button>
           <input
+            className="cartItem-Counter"
             value={cartItems[itemID]}
             onChange={(e) =>
               updateCartItemCount(Number(e.target.value), itemID)
             }
           />
-          <button onClick={() => addToCart(itemID)}> + </button>
+          <button className="cartItem-bttn" onClick={() => addToCart(itemID)}>
+            {" "}
+            +{" "}
+          </button>
         </div>
       </div>
     </div>
