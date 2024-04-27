@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+:root {
+    --Brown: #633926;
+    --Beige: #F6CF65;
+    --Off-White: #FFF6E8;
+    --Gold: #FF9E15;
+    --Green: #007847;
+}
+
 body { margin: 0 ;}
 
 .nav {
