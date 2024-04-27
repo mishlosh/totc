@@ -1,0 +1,39 @@
+.map-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/src/images/caribbean-map.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.icon {
+    position: absolute;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    z-index: 1; /* Ensure icons are displayed below the info box */
+}
+
+.info-box {
+    position: absolute;
+    top: 430px;
+    left: 27%;
+    transform: translateX(-60%);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 2; /* Ensure info box is displayed above icons */
+    width: 500px;
+}
+
+.logo-container {
+    position: absolute;
+    top: 20px; /* Adjust top position */
+    right: 20px; /* Adjust right position */
+}
+
+.logo {
+    width: 150px; /* Adjust width */
+    height: auto; /* Maintain aspect ratio */
+}
