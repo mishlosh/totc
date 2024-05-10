@@ -1,12 +1,21 @@
 # totc
 
 Requires:
-Database: "tocd"
-with tables: "itemlistings_main"
-values(itenName, price, imagePath, categoryID, itemID)
 
-"itemlistings_category"
-values(categoryID, categoryName)
+NodeJS
+SQL
+PHP
+
+The images are not legal, need to make our own images or find copyright free images.
+
+images should be stored in the /frontend/public/images folder
+imagepath names should follow the format "../images/[file]"
+Dietary tags are stored in string format: "xDGxxx" for example. Order does not matter.
+D: Dairy
+G: Gluten
+S: Spicy
+V: Vegan
+C: Shellfish
 
 # Startup:
 

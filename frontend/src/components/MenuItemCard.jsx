@@ -1,5 +1,6 @@
 import { AlignBottom, AlignRight } from "phosphor-react";
 import "../pages/Menu/Menu.css";
+import DietaryIcons from "./DietaryIcons";
 export default function MenuItemCard({
   itemId,
   itemName,
@@ -29,6 +30,9 @@ export default function MenuItemCard({
           <div className="col col-8 card-body">
             <h5 className="card-title">{itemName}</h5>
             <p className="card-text">{description}</p>
+            <div className="diet-icon-group">
+              <DietaryIcons tags={dietaryTags} />
+            </div>
             <p className="card-price">${price}</p>
             <a href="#" className="btn btn-primary menuBttn">
               +
